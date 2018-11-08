@@ -73,7 +73,7 @@ public class TankstellenfilialeHooksTransient<T extends com.apiomat.nativemodule
     @Override
     public java.util.List<com.apiomat.nativemodule.tankstelle.Tankstellenfiliale> doGetAll( String query, com.apiomat.nativemodule.Request r )
     {
-
+    	ArrayList<Tankstellenfiliale> listdata = new ArrayList<Tankstellenfiliale>();
 		try {
 			URL url = new URL("https://creativecommons.tankerkoenig.de/json/list.php?lat=51.3349021&lng=12.3999524&type=all&rad=4&sort=dist&apikey=4413f0a7-8d1c-2e78-9d4b-85062d1a9d0a");
 			
@@ -91,20 +91,20 @@ public class TankstellenfilialeHooksTransient<T extends com.apiomat.nativemodule
 			JSONObject response = new JSONObject( out.toString());
 			this.model.log(Level.DEBUG, response.toString());
 			
-			Tankstellenfiliale tsf = new Tankstellenfiliale();
 			
-			ArrayList<String> listdata = new ArrayList<String>();     
+			
+			     
 			JSONArray jArray = (JSONArray)response.getJSONArray("stations"); 
 			if (jArray != null) { 
 			   for (int i=0;i<jArray.length();i++){ 
+				Tankstellenfiliale tsf = this.model.createObject(Tankstellenfiliale.class, r);
 			    tsf.setBrand(jArray.getJSONObject(i).getString("brand"));
 			    tsf.setName(jArray.getJSONObject(i).getString("name"));
 			    tsf.setDiesel(jArray.getJSONObject(i).getDouble("diesel"));
 			    tsf.setE10(jArray.getJSONObject(i).getDouble("e10"));
 			    tsf.setE5(jArray.getJSONObject(i).getDouble("e5"));
+			    listdata.add(tsf);
 			   } 
-			   
-			  
 			   
 			} 
 			
@@ -118,7 +118,7 @@ public class TankstellenfilialeHooksTransient<T extends com.apiomat.nativemodule
 		
     	
     	
-        return null;
+        return listdata;
     }
 
     @Override
