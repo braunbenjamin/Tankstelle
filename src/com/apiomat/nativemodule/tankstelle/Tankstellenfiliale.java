@@ -53,6 +53,11 @@ public class Tankstellenfiliale extends com.apiomat.nativemodule.AbstractClientD
     public static final String MODEL_NAME = "Tankstellenfiliale";
 
     /** class specific attributes */
+    private String brand = null;
+    private Long diesel = null;
+    private Long e10 = null;
+    private Long e5 = null;
+    private String name = null;
     /**
      * Protected constructor; to create a new instance, use the createObject() method
      */
@@ -75,6 +80,56 @@ public class Tankstellenfiliale extends com.apiomat.nativemodule.AbstractClientD
     public String getModelName( )
     {
         return MODEL_NAME;
+    }
+
+    public String getBrand()
+    {
+         return this.brand;
+    }
+
+    public void setBrand( String arg )
+    {
+        this.brand = arg;
+    }
+
+    public Long getDiesel()
+    {
+         return this.diesel;
+    }
+
+    public void setDiesel( Long arg )
+    {
+        this.diesel = arg;
+    }
+
+    public Long getE10()
+    {
+         return this.e10;
+    }
+
+    public void setE10( Long arg )
+    {
+        this.e10 = arg;
+    }
+
+    public Long getE5()
+    {
+         return this.e5;
+    }
+
+    public void setE5( Long arg )
+    {
+        this.e5 = arg;
+    }
+
+    public String getName()
+    {
+         return this.name;
+    }
+
+    public void setName( String arg )
+    {
+        this.name = arg;
     }
 
 }
