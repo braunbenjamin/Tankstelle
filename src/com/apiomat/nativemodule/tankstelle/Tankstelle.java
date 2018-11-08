@@ -24,6 +24,7 @@
  */
 package com.apiomat.nativemodule.tankstelle;
 
+import com.apiomat.nativemodule.NativeModuleConfig.Type;
 
 /**
  * Generated class for starting and stopping your module. 
@@ -55,6 +56,27 @@ public class Tankstelle implements com.apiomat.nativemodule.IModule
     // Read @NativeModuleConfig values using the following code:
     // Tankstelle.APP_CONFIG_PROXY.getConfigValue( Tankstelle.HOSTNAME, appName, system );
 
+    @com.apiomat.nativemodule.NativeModuleConfig(
+        datatype = Type.TEXT,
+    	example = "https://test.de",
+    	title = "URL",
+    	info = "URL",
+    	defaultValue = "",
+    	notifyAllNodes = true,
+    	order = 1 )
+    public static String TSURL = "Tankstelle_tsurl";
+       
+    @com.apiomat.nativemodule.NativeModuleConfig(
+    	datatype = Type.TEXT,
+    	example = "12334567ABCDEF",
+    	title = "Google-API-Key",
+    	info = "Google-API-Key",
+    	defaultValue = "",
+    	notifyAllNodes = true,
+    	order = 2 )
+    public static String TSAPI = "Tankstelle_tsapi";
+    
+    
     /**
      * This method gets called once in the cluster when the module is uploaded.
      */

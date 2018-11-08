@@ -39,6 +39,7 @@ import com.apiomat.nativemodule.basics.User;
 
 
 
+
 /**
 * Generated class for hooks on your Tankstellenfiliale data model
 */
@@ -73,9 +74,12 @@ public class TankstellenfilialeHooksTransient<T extends com.apiomat.nativemodule
     @Override
     public java.util.List<com.apiomat.nativemodule.tankstelle.Tankstellenfiliale> doGetAll( String query, com.apiomat.nativemodule.Request r )
     {
+    	String tsurl = (String) Tankstelle.APP_CONFIG_PROXY.getConfigValue( Tankstelle.TSURL, r.getApplicationName(), r.getSystem() );
+    	String tsapi = (String) Tankstelle.APP_CONFIG_PROXY.getConfigValue( Tankstelle.TSAPI, r.getApplicationName(), r.getSystem() );
+    	
     	ArrayList<Tankstellenfiliale> listdata = new ArrayList<Tankstellenfiliale>();
 		try {
-			URL url = new URL("https://creativecommons.tankerkoenig.de/json/list.php?lat=51.3349021&lng=12.3999524&type=all&rad=4&sort=dist&apikey=4413f0a7-8d1c-2e78-9d4b-85062d1a9d0a");
+			URL url = new URL(""+tsurl+""+tsapi+"");
 			
 			InputStream in = url.openStream();
 			
