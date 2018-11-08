@@ -23,8 +23,16 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package com.apiomat.nativemodule.tankstelle;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+
+import org.json.JSONObject;
+
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
+import com.apiomat.nativemodule.salesmodule1.SalesModule1;
 
 
 /**
@@ -61,6 +69,36 @@ public class TankstellenfilialeHooksTransient<T extends com.apiomat.nativemodule
     @Override
     public java.util.List<com.apiomat.nativemodule.tankstelle.Tankstellenfiliale> doGetAll( String query, com.apiomat.nativemodule.Request r )
     {
+
+		try {
+			URL url = new URL("https://creativecommons.tankerkoenig.de/json/list.php?lat=51.3349021&lng=12.3999524&type=all&rad=4&sort=dist&apikey=4413f0a7-8d1c-2e78-9d4b-85062d1a9d0a");
+			
+			InputStream in = url.openStream();
+			
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			byte[] buffer = new byte[4096];
+			int n;
+			while((n = in.read(buffer))>0)
+			{
+				out.write(buffer, 0, n);
+			}
+			in.close();
+			
+			JSONObject response = new JSONObject( out.toString());
+			this.model.log(Level.DEBUG, response.toString());
+			
+			
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+    	
+    	
         return null;
     }
 
