@@ -69,8 +69,8 @@ public class Tankstelle implements com.apiomat.nativemodule.IModule
     @com.apiomat.nativemodule.NativeModuleConfig(
     	datatype = Type.TEXT,
     	example = "12334567ABCDEF",
-    	title = "Google-API-Key",
-    	info = "Google-API-Key",
+    	title = "Website-API-Key",
+    	info = "Website-API-Key",
     	defaultValue = "",
     	notifyAllNodes = true,
     	order = 2 )
