@@ -54,9 +54,9 @@ public class Tankstellenfiliale extends com.apiomat.nativemodule.AbstractClientD
 
     /** class specific attributes */
     private String brand = null;
-    private Long diesel = null;
-    private Long e10 = null;
-    private Long e5 = null;
+    private Double diesel = null;
+    private Double e10 = null;
+    private Double e5 = null;
     private String name = null;
     /**
      * Protected constructor; to create a new instance, use the createObject() method
@@ -92,32 +92,32 @@ public class Tankstellenfiliale extends com.apiomat.nativemodule.AbstractClientD
         this.brand = arg;
     }
 
-    public Long getDiesel()
+    public Double getDiesel()
     {
          return this.diesel;
     }
 
-    public void setDiesel( Long arg )
+    public void setDiesel( Double arg )
     {
         this.diesel = arg;
     }
 
-    public Long getE10()
+    public Double getE10()
     {
          return this.e10;
     }
 
-    public void setE10( Long arg )
+    public void setE10( Double arg )
     {
         this.e10 = arg;
     }
 
-    public Long getE5()
+    public Double getE5()
     {
          return this.e5;
     }
 
-    public void setE5( Long arg )
+    public void setE5( Double arg )
     {
         this.e5 = arg;
     }

@@ -27,11 +27,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
+
 
 
 
@@ -87,7 +91,22 @@ public class TankstellenfilialeHooksTransient<T extends com.apiomat.nativemodule
 			JSONObject response = new JSONObject( out.toString());
 			this.model.log(Level.DEBUG, response.toString());
 			
+			Tankstellenfiliale tsf = new Tankstellenfiliale();
 			
+			ArrayList<String> listdata = new ArrayList<String>();     
+			JSONArray jArray = (JSONArray)response.getJSONArray("stations"); 
+			if (jArray != null) { 
+			   for (int i=0;i<jArray.length();i++){ 
+			    tsf.setBrand(jArray.getJSONObject(i).getString("brand"));
+			    tsf.setName(jArray.getJSONObject(i).getString("name"));
+			    tsf.setDiesel(jArray.getJSONObject(i).getDouble("diesel"));
+			    tsf.setE10(jArray.getJSONObject(i).getDouble("e10"));
+			    tsf.setE5(jArray.getJSONObject(i).getDouble("e5"));
+			   } 
+			   
+			  
+			   
+			} 
 			
 			
 		} catch (IOException e) {
