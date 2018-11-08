@@ -102,12 +102,21 @@ public class TankstellenfilialeHooksTransient<T extends com.apiomat.nativemodule
 			if (jArray != null) { 
 			   for (int i=0;i<jArray.length();i++){ 
 				Tankstellenfiliale tsf = this.model.createObject(Tankstellenfiliale.class, r);
+				Tankstellenfiliale_cache tsfc = this.model.createObject(Tankstellenfiliale_cache.class, r);
 			    tsf.setBrand(jArray.getJSONObject(i).getString("brand"));
 			    tsf.setName(jArray.getJSONObject(i).getString("name"));
 			    tsf.setDiesel(jArray.getJSONObject(i).getDouble("diesel"));
 			    tsf.setE10(jArray.getJSONObject(i).getDouble("e10"));
 			    tsf.setE5(jArray.getJSONObject(i).getDouble("e5"));
 			    listdata.add(tsf);
+			   
+			    tsfc.setBrand(jArray.getJSONObject(i).getString("brand"));
+			    tsfc.setName(jArray.getJSONObject(i).getString("name"));
+			    tsfc.setDiesel(jArray.getJSONObject(i).getDouble("diesel"));
+			    tsfc.setE10(jArray.getJSONObject(i).getDouble("e10"));
+			    tsfc.setE5(jArray.getJSONObject(i).getDouble("e5"));
+			    tsfc.save();
+			    
 			   } 
 			   
 			} 
